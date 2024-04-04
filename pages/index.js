@@ -1,13 +1,15 @@
 import Head from "next/head";
-import Header from "@components/components/Header";
-import Button from "@components/components/Button";
+
 import Firebase from "@svgs/Firebase";
+import Header from "@components/Header";
+import Button from "@components/Button";
+import ActivityIndicator from "@components/ActivityIndicator";
 
 export default function Home() {
   return (
     <>
       <Head>
-        <title>{`Glue`}</title>
+        <title>Glue</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta property="og:title" content="tryglue.dev" />
         <meta name="twitter:title" content="tryglue.dev" />
@@ -36,7 +38,7 @@ export default function Home() {
         <div className="flex flex-1 bg-bg md:items-center md:justify-center">
           <div className="flex flex-1 flex-col md:h-[475px] md:w-[435px] md:flex-none md:rounded-xl md:border md:border-gray-200 md:border-opacity-80 md:bg-white">
             <div className="flex flex-1 flex-col items-center justify-center">
-              <div className="text-[76px] font-normal leading-none text-black md:text-[125px] opacity-80">
+              <div className="text-[76px] font-normal leading-none text-black opacity-80 md:text-[125px]">
                 glue.
               </div>
 
@@ -46,21 +48,17 @@ export default function Home() {
             </div>
 
             <div className="mx-5 flex flex-col">
-              <Button
-                className="my-3"
-              >
+              <Button className="my-3">
                 <Firebase width={20} height={20} className="mr-2" />
                 <span>Sign In with Firebase / Firestore</span>
               </Button>
 
               <div className="mb-6 flex justify-center">
                 <p className="text-center text-xs font-normal text-black text-opacity-60">
-                Random text,
+                  Random text,
                 </p>
 
-                <p
-                  className="ml-1 cursor-pointer text-center text-xs font-semibold text-black text-opacity-60 underline underline-offset-4"
-                >
+                <p className="ml-1 cursor-pointer text-center text-xs font-semibold text-black text-opacity-60 underline underline-offset-4">
                   will use for something else
                 </p>
               </div>

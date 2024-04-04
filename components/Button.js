@@ -1,4 +1,4 @@
-import ActivityIndicator from "./ActivityIndicator";
+import ActivityIndicator from "@components/ActivityIndicator";
 
 export default function Button({
   children,
@@ -31,7 +31,7 @@ export default function Button({
           {icon ? icon : null}
 
           <p
-            className={`text-sm font-medium leading-tight text-white flex items-center justify-center ${textClassName}`}
+            className={`flex items-center justify-center text-sm font-medium leading-tight text-white ${textClassName}`}
           >
             {children}
           </p>
