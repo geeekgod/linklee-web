@@ -2,6 +2,7 @@ import Head from "next/head";
 import Header from "@components/components/Header";
 import Button from "@components/components/Button";
 import Firebase from "@svgs/Firebase";
+import TextField from "@components/components/TextField";
 
 export default function Home() {
   return (
@@ -46,6 +47,7 @@ export default function Home() {
             </div>
 
             <div className="mx-5 flex flex-col">
+              <TextField label="Email" placeholder="Email" />
               <Button
                 className="my-3"
               >
