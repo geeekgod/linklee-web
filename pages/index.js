@@ -1,7 +1,7 @@
 import Head from "next/head";
+
 import { FcGoogle } from "react-icons/fc";
 
-import Firebase from "@svgs/Firebase";
 import Header from "@components/Header";
 import Button from "@components/Button";
 

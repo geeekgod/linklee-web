@@ -2,14 +2,23 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@styles/*": [
-        "styles/*"
+      "@constants/*": [
+        "./constants/*"
       ],
       "@components/*": [
         "./components/*"
       ],
+      "@hooks/*": [
+        "./hooks/*"
+      ],
+      "@styles/*": [
+        "styles/*"
+      ],
       "@svgs/*": [
         "./svgs/*"
+      ],
+      "@utils/*": [
+        "./utils/*"
       ],
     }
   }
