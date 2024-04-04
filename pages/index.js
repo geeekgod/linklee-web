@@ -1,9 +1,9 @@
 import Head from "next/head";
+import { FcGoogle } from "react-icons/fc";
 
 import Firebase from "@svgs/Firebase";
 import Header from "@components/Header";
 import Button from "@components/Button";
-import ActivityIndicator from "@components/ActivityIndicator";
 
 export default function Home() {
   return (
@@ -36,21 +36,22 @@ export default function Home() {
         <Header />
 
         <div className="flex flex-1 bg-bg md:items-center md:justify-center">
-          <div className="flex flex-1 flex-col md:h-[475px] md:w-[435px] md:flex-none md:rounded-xl md:border md:border-gray-200 md:border-opacity-80 md:bg-white">
+          <div className="flex flex-1 flex-col md:h-[417px] md:w-[429px] md:flex-none md:rounded-xl md:border md:border-gray-200 md:border-opacity-80 md:bg-white">
             <div className="flex flex-1 flex-col items-center justify-center">
-              <div className="text-[76px] font-normal leading-none text-black opacity-80 md:text-[125px]">
+              <div className="text-[76px] font-normal leading-none text-black opacity-80 md:text-[124px]">
                 glue.
               </div>
 
-              <div className="mt-3 text-center text-sm font-normal leading-none text-black text-opacity-80 md:text-xl md:font-light">
+              <div className="mt-5 text-center text-sm font-normal leading-none text-black text-opacity-80 md:text-xl">
                 zapier for push notifications
               </div>
             </div>
 
             <div className="mx-5 flex flex-col">
               <Button className="my-3">
-                <Firebase width={20} height={20} className="mr-2" />
-                <span>Sign In with Firebase / Firestore</span>
+                <FcGoogle className="mr-2" size={20} />
+
+                <span>Sign In with Google</span>
               </Button>
 
               <div className="mb-6 flex justify-center">

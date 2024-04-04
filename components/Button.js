@@ -19,7 +19,7 @@ export default function Button({
       ${className}
       `}
       onClick={() => {
-        if (!disabled && !loading) {
+        if (!disabled && !loading && onClick) {
           onClick();
         }
       }}
