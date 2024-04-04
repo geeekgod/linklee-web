@@ -1,4 +1,4 @@
-import ActivityIndicator from "./ActivityIndicator";
+import ActivityIndicator from "@components/ActivityIndicator"
 
 export default function OutlineButton({
   children,
