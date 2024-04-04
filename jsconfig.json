@@ -6,7 +6,10 @@
         "styles/*"
       ],
       "@components/*": [
-        "components/*"
+        "./*"
+      ],
+      "@svgs/*": [
+        "./svgs/*"
       ],
     }
   }
