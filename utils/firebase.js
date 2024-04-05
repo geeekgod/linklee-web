@@ -1,13 +1,14 @@
-import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-import firebaseConfig from "@constants/firebaseConfig";
+import { getApp, getApps, initializeApp } from "firebase/app";
 import {
   initializeAuth,
   browserPopupRedirectResolver,
   browserLocalPersistence,
 } from "firebase/auth";
 
-const app = initializeApp(firebaseConfig);
+import firebaseConfig from "@constants/firebaseConfig";
+
+const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
 
 const getFirebaseAuth = () => {
   if (typeof window === "undefined") return null;
