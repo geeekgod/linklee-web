@@ -17,7 +17,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Glue | zapier for push notifications</title>
+        <title>glue | zapier for push notifications</title>
         <link rel="icon" href="/favicon.ico" />
         <meta property="og:title" content="tryglue.dev" />
         <meta name="twitter:title" content="tryglue.dev" />
