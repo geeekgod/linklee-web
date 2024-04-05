@@ -11,15 +11,17 @@ provider.addScope("email");
 export default function useGoogleLogin(props = {}) {
   const { onError, onSuccess } = props;
 
-  const { isPending: isLoggingInWithGoogle, mutate: loginWithGoogle } =
-    useMutation({
-      mutationFn: () => signInWithPopup(firebaseAuth, provider),
-      onError: (error) => {
-        toast.error(error?.code);
-        onError(error);
-      },
-      onSuccess,
-    });
+  const { isPending, mutate } = useMutation({
+    mutationFn: () => signInWithPopup(firebaseAuth, provider),
+    onError: (error) => {
+      toast.error(error?.code);
+      onError(error);
+    },
+    onSuccess,
+  });
 
-  return { isLoggingInWithGoogle, loginWithGoogle };
+  return {
+    isLoggingInWithGoogle: isPending,
+    loginWithGoogle: mutate,
+  };
 }

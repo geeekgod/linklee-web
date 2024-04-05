@@ -1,18 +1,52 @@
+import { useEffect } from "react";
 import Head from "next/head";
 
+import { signOut } from "firebase/auth";
 import { FcGoogle } from "react-icons/fc";
+import { useQueryClient } from "@tanstack/react-query";
 
 import Header from "@components/Header";
 import Button from "@components/Button";
-
-import useAppContext from "@hooks/useAppContext";
-import useGoogleLogin from "@hooks/useGoogleLogin";
 import ActivityIndicator from "@components/ActivityIndicator";
 
-export default function Home() {
-  const { user } = useAppContext();
+import useUser from "@hooks/queries/useUser";
+import useCreateUser from "@hooks/mutations/useCreateUser";
+import useGoogleLogin from "@hooks/mutations/useGoogleLogin";
 
-  const { isLoggingInWithGoogle, loginWithGoogle } = useGoogleLogin();
+import { getHiResDp } from "@utils/helpers";
+import { firebaseAuth } from "@utils/firebase";
+
+export default function Home() {
+  const queryClient = useQueryClient();
+  const { user, userData } = useUser();
+
+  const { createUser } = useCreateUser({
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["user"] });
+    },
+  });
+
+  const { isLoggingInWithGoogle, loginWithGoogle } = useGoogleLogin({
+    onSuccess: async (userData) => {
+      createUser({
+        data: {
+          dp: getHiResDp(userData?.user?.photoURL),
+          email: userData?.user?.email,
+          id: userData?.user?.uid,
+          name: userData?.user?.displayName,
+        },
+        userId: userData?.user?.uid,
+      });
+    },
+  });
+
+  useEffect(() => {
+    if (userData) {
+      console.log(userData);
+    }
+  }, [userData]);
+
+  //signOut(firebaseAuth);
 
   return (
     <>
