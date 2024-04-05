@@ -1,8 +1,6 @@
 import Head from "next/head";
 import { useState } from "react";
 
-import { FcGoogle } from "react-icons/fc";
-
 import Header from "@components/Header";
 import Button from "@components/Button";
 import OutlineButton from "@components/OutlineButton";
