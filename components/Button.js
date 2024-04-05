@@ -25,7 +25,7 @@ export default function Button({
       }}
     >
       {loading ? (
-        <ActivityIndicator size="small" />
+        <ActivityIndicator mode="light" size="small" />
       ) : (
         <>
           {icon ? icon : null}

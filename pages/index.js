@@ -5,7 +5,10 @@ import { FcGoogle } from "react-icons/fc";
 import Header from "@components/Header";
 import Button from "@components/Button";
 
+import useGoogleLogin from "@hooks/useGoogleLogin";
+
 export default function Home() {
+  const { loading, login } = useGoogleLogin();
   return (
     <>
       <Head>
@@ -48,10 +51,13 @@ export default function Home() {
             </div>
 
             <div className="mx-5 flex flex-col">
-              <Button className="my-3">
-                <FcGoogle className="mr-2" size={20} />
-
-                <span>Sign In with Google</span>
+              <Button
+                loading={loading}
+                onClick={login}
+                icon={<FcGoogle className="mr-2" size={20} />}
+                className="my-3"
+              >
+                Sign In with Google
               </Button>
 
               <div className="mb-6 flex justify-center">
