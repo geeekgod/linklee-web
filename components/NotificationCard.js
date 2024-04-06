@@ -1,11 +1,10 @@
 import React from "react";
-import Image from "next/image";
-import TextField from "./TextField";
-import Upload from "@svgs/Upload";
-import ImageUpload from "./ImageUpload";
-import Button from "./Button";
 
-const CreateNotification = () => {
+import Button from "@components/Button";
+import ImageUpload from "@components/ImageUpload";
+import TextField from "@components/TextField";
+
+export default function NotificationCard() {
   return (
     <div className="flex h-[620px] w-[500px] flex-col items-center justify-start rounded-xl border border-[#D8D8D8] bg-[#FAFAFA]">
       <div className="border-b px-4 py-4 sm:px-8 sm:py-8">
@@ -34,6 +33,4 @@ const CreateNotification = () => {
       </div>
     </div>
   );
-};
-
-export default CreateNotification;
+}

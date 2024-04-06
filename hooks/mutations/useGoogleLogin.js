@@ -1,6 +1,6 @@
-import { toast } from "react-toastify";
 import { useMutation } from "@tanstack/react-query";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { toast } from "react-toastify";
 
 import { firebaseAuth } from "@utils/firebase";
 

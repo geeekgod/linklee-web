@@ -1,22 +1,22 @@
-import { useEffect } from "react";
 import Head from "next/head";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 
-import { signOut } from "firebase/auth";
-import { FcGoogle } from "react-icons/fc";
 import { useQueryClient } from "@tanstack/react-query";
+import { FcGoogle } from "react-icons/fc";
 
-import Header from "@components/Header";
-import Button from "@components/Button";
 import ActivityIndicator from "@components/ActivityIndicator";
+import Button from "@components/Button";
+import Header from "@components/Header";
 
-import useUser from "@hooks/queries/useUser";
 import useCreateUser from "@hooks/mutations/useCreateUser";
 import useGoogleLogin from "@hooks/mutations/useGoogleLogin";
+import useUser from "@hooks/queries/useUser";
 
 import { getHiResDp } from "@utils/helpers";
-import { firebaseAuth } from "@utils/firebase";
 
 export default function Home() {
+  const router = useRouter();
   const queryClient = useQueryClient();
   const { user, userData } = useUser();
 
@@ -42,11 +42,9 @@ export default function Home() {
 
   useEffect(() => {
     if (userData) {
-      console.log(userData);
+      router.push("/connect");
     }
-  }, [userData]);
-
-  //signOut(firebaseAuth);
+  }, [router, userData]);
 
   return (
     <>
@@ -75,7 +73,7 @@ export default function Home() {
         <Header />
 
         <div className="flex flex-1 bg-bg md:items-center md:justify-center">
-          {user ? (
+          {user === undefined || user ? (
             <ActivityIndicator />
           ) : (
             <div className="flex flex-1 flex-col md:h-[417px] md:w-[429px] md:flex-none md:rounded-xl md:border md:border-gray-200 md:border-opacity-80 md:bg-white">

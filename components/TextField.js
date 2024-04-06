@@ -45,7 +45,7 @@ export default function TextField({
               }}
               onChange={(e) =>
                 onTextChange(
-                  lowercaseOnly ? e.target.value.toLowerCase() : e.target.value
+                  lowercaseOnly ? e.target.value.toLowerCase() : e.target.value,
                 )
               }
               placeholder={placeholder || ""}
@@ -86,7 +86,7 @@ export default function TextField({
               }}
               onChange={(e) =>
                 onTextChange(
-                  lowercaseOnly ? e.target.value.toLowerCase() : e.target.value
+                  lowercaseOnly ? e.target.value.toLowerCase() : e.target.value,
                 )
               }
               placeholder={placeholder || ""}

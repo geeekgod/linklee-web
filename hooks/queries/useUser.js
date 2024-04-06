@@ -1,11 +1,21 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { signOut } from "firebase/auth";
 
 import useAppContext from "@hooks/useAppContext";
 
 import fetcher from "@utils/fetcher";
+import { firebaseAuth } from "@utils/firebase";
 
 export default function useUser() {
   const { user } = useAppContext();
+  const queryClient = useQueryClient();
+
+  const logout = (onLogout) => {
+    signOut(firebaseAuth).then(() => {
+      queryClient.clear();
+      onLogout ? onLogout() : null;
+    });
+  };
 
   const { data, isFetching, isLoading } = useQuery({
     queryKey: ["user", user?.uid],
@@ -25,6 +35,7 @@ export default function useUser() {
   });
 
   return {
+    logout,
     user,
     userData: data?.user,
     userLoading: isLoading || isFetching,
