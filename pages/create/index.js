@@ -1,10 +1,10 @@
 import Image from "next/image";
-import { useState } from "react";
-import { Inter } from "next/font/google";
-import Header from "@components/Header";
-import CreateNotification from "@components/CreateNotificationCard";
 
-const inter = Inter({ subsets: ["latin"] });
+import Header from "@components/Header";
+import NotificationCard from "@components/NotificationCard";
+import ActivityIndicator from "@components/ActivityIndicator";
+
+import useAuthCheck from "@hooks/useAuthCheck";
 
 const IphoneComponent = () => {
   return (
@@ -20,15 +20,23 @@ const IphoneComponent = () => {
   );
 };
 
-export default function Home() {
+export default function Create() {
+  const { ready } = useAuthCheck();
+
   return (
     <div className="flex h-[100dvh] w-screen md:h-screen">
       <div className="flex flex-1 flex-col">
         <Header />
 
         <div className="flex flex-1 gap-x-10 bg-bg md:items-center md:justify-center md:gap-x-16 ">
-          <CreateNotification />
-          <IphoneComponent />
+          {!ready ? (
+            <ActivityIndicator />
+          ) : (
+            <>
+              <NotificationCard />
+              <IphoneComponent />
+            </>
+          )}
         </div>
       </div>
     </div>

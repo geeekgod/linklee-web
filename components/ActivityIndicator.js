@@ -1,6 +1,10 @@
 import { useMemo } from "react";
 
-function ActivityIndicator({ className, mode = "dark", size = "large" }) {
+export default function ActivityIndicator({
+  className,
+  mode = "dark",
+  size = "large",
+}) {
   const useSize = useMemo(() => {
     if (size === "small") return "h-5 w-5";
     else if (size === "medium") return "h-8 w-8";
@@ -17,5 +21,3 @@ function ActivityIndicator({ className, mode = "dark", size = "large" }) {
     />
   );
 }
-
-export default ActivityIndicator;

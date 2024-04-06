@@ -6,6 +6,7 @@ import { ToastContainer } from "react-toastify";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import "@styles/globals.css";
+
 import AppContext from "@utils/context";
 import { firebaseAuth } from "@utils/firebase";
 

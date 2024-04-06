@@ -1,7 +1,12 @@
 import { useRouter } from "next/router";
 
-function Header() {
+import { FiLogOut } from "react-icons/fi";
+
+import useUser from "@hooks/queries/useUser";
+
+export default function Header() {
   const router = useRouter();
+  const { logout, user } = useUser();
 
   return (
     <div>
@@ -23,6 +28,13 @@ function Header() {
               BETA
             </div>
           </div>
+
+          {user ? (
+            <FiLogOut
+              className="ml-2 cursor-pointer"
+              onClick={() => logout()}
+            />
+          ) : null}
         </div>
       </div>
 
@@ -30,5 +42,3 @@ function Header() {
     </div>
   );
 }
-
-export default Header;
