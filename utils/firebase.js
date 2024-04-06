@@ -1,10 +1,10 @@
-import { getFirestore } from "firebase/firestore";
 import { getApp, getApps, initializeApp } from "firebase/app";
 import {
-  initializeAuth,
-  browserPopupRedirectResolver,
   browserLocalPersistence,
+  browserPopupRedirectResolver,
+  initializeAuth,
 } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 
 import firebaseConfig from "@constants/firebaseConfig";
 

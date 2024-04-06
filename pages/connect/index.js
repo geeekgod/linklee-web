@@ -1,11 +1,11 @@
-import { useState } from "react";
 import Head from "next/head";
+import { useState } from "react";
 
-import Header from "@components/Header";
-import Button from "@components/Button";
-import TextField from "@components/TextField";
-import OutlineButton from "@components/OutlineButton";
 import ActivityIndicator from "@components/ActivityIndicator";
+import Button from "@components/Button";
+import Header from "@components/Header";
+import OutlineButton from "@components/OutlineButton";
+import TextField from "@components/TextField";
 
 import useAuthCheck from "@hooks/useAuthCheck";
 

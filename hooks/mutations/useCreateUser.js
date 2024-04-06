@@ -1,6 +1,6 @@
-import { toast } from "react-toastify";
-import { signOut } from "firebase/auth";
 import { useMutation } from "@tanstack/react-query";
+import { signOut } from "firebase/auth";
+import { toast } from "react-toastify";
 
 import fetcher from "@utils/fetcher";
 import { firebaseAuth } from "@utils/firebase";

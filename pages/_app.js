@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
 import { Inter } from "next/font/google";
+import { useEffect, useState } from "react";
 
-import "react-toastify/dist/ReactToastify.css";
-import { ToastContainer } from "react-toastify";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import "@styles/globals.css";
 

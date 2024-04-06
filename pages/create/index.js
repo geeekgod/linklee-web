@@ -1,8 +1,8 @@
 import Image from "next/image";
 
+import ActivityIndicator from "@components/ActivityIndicator";
 import Header from "@components/Header";
 import NotificationCard from "@components/NotificationCard";
-import ActivityIndicator from "@components/ActivityIndicator";
 
 import useAuthCheck from "@hooks/useAuthCheck";
 

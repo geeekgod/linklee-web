@@ -1,5 +1,5 @@
-import { signOut } from "firebase/auth";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { signOut } from "firebase/auth";
 
 import useAppContext from "@hooks/useAppContext";
 

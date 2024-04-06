@@ -1,17 +1,17 @@
-import { useEffect } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 
-import { FcGoogle } from "react-icons/fc";
 import { useQueryClient } from "@tanstack/react-query";
+import { FcGoogle } from "react-icons/fc";
 
-import Header from "@components/Header";
-import Button from "@components/Button";
 import ActivityIndicator from "@components/ActivityIndicator";
+import Button from "@components/Button";
+import Header from "@components/Header";
 
-import useUser from "@hooks/queries/useUser";
 import useCreateUser from "@hooks/mutations/useCreateUser";
 import useGoogleLogin from "@hooks/mutations/useGoogleLogin";
+import useUser from "@hooks/queries/useUser";
 
 import { getHiResDp } from "@utils/helpers";
 
