@@ -15,7 +15,7 @@ const IphoneComponent = () => {
 
             {/* glassmorphism notification card */}
             <div className='flex flex-col items-center justify-center gap-y-4 h-full'>
-                <NotificationCard />
+                <NotificationCard logo='./notification-icon.png' title='Hello wassup' text='yo click on this' />
             </div>
         </div>
     );
