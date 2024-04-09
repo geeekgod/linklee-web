@@ -7,6 +7,7 @@ const NotificationCard = ({
     text = 'Notification Text',
     onClick = () => { }
 }) => {
+
     return (
         <div
             onClick={onClick}
@@ -16,6 +17,7 @@ const NotificationCard = ({
                 src={logo}
                 width={40}
                 height={40}
+                className='rounded-xl'
                 alt="notification"
             />
             <div

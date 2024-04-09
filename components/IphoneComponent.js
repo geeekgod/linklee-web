@@ -2,7 +2,11 @@ import React from 'react'
 import Image from 'next/image'
 import NotificationCard from './NotificationCard';
 
-const IphoneComponent = () => {
+const IphoneComponent = ({
+    title,
+    text,
+    image
+}) => {
     return (
         <div className={`flex h-[600px] w-[500px] items-center justify-center`}>
             <Image
@@ -15,7 +19,9 @@ const IphoneComponent = () => {
 
             {/* glassmorphism notification card */}
             <div className='flex flex-col items-center justify-center gap-y-4 h-full'>
-                <NotificationCard logo='./notification-icon.png' title='Hello wassup' text='yo click on this' />
+                {
+                    <NotificationCard title={title?.length > 0 ? title : "Write something"}  text={text?.length > 0 ? text : 'yo click on this'} logo={image !== null ? image : './notification-icon.png'} />
+                }
             </div>
         </div>
     );

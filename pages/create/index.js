@@ -1,3 +1,4 @@
+import { useState } from "react";
 import ActivityIndicator from "@components/ActivityIndicator";
 import Header from "@components/Header";
 import CreateNotificationCard from "@components/CreateNotificationCard";
@@ -7,6 +8,9 @@ import useAuthCheck from "@hooks/useAuthCheck";
 
 export default function Create() {
   const { ready } = useAuthCheck();
+  const [title, setTitle] = useState("");
+  const [text, setText] = useState("");
+  const [image, setImage] = useState(null);
 
   return (
     <div className="flex h-[100dvh] w-screen md:h-screen">
@@ -18,8 +22,8 @@ export default function Create() {
             <ActivityIndicator />
           ) : (
             <>
-              <CreateNotificationCard />
-              <IphoneComponent />
+              <CreateNotificationCard setTitle={setTitle} setText={setText} setImage={setImage} />
+              <IphoneComponent title={title} text={text} image={image} />
             </>
           )}
         </div>
