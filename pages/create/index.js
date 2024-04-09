@@ -1,27 +1,16 @@
-import Image from "next/image";
-
+import { useState } from "react";
 import ActivityIndicator from "@components/ActivityIndicator";
 import Header from "@components/Header";
-import NotificationCard from "@components/NotificationCard";
+import CreateNotificationCard from "@components/CreateNotificationCard";
+import IphoneComponent from "@components/IphoneComponent";
 
 import useAuthCheck from "@hooks/useAuthCheck";
 
-const IphoneComponent = () => {
-  return (
-    <div className={`flex h-[600px] w-[500px] items-center justify-center`}>
-      <Image
-        className="absolute bottom-[-8%]"
-        src="/iphone.png"
-        width={400}
-        height={400}
-        alt="iphone"
-      />
-    </div>
-  );
-};
-
 export default function Create() {
   const { ready } = useAuthCheck();
+  const [title, setTitle] = useState("");
+  const [text, setText] = useState("");
+  const [image, setImage] = useState(null);
 
   return (
     <div className="flex h-[100dvh] w-screen md:h-screen">
@@ -33,8 +22,8 @@ export default function Create() {
             <ActivityIndicator />
           ) : (
             <>
-              <NotificationCard />
-              <IphoneComponent />
+              <CreateNotificationCard setTitle={setTitle} setText={setText} setImage={setImage} />
+              <IphoneComponent title={title} text={text} image={image} />
             </>
           )}
         </div>
