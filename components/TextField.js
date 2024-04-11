@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import ActivityIndicator from "@components/ActivityIndicator";
+import ActivityIndicator from "./ActivityIndicator";
 
 export default function TextField({
   className,

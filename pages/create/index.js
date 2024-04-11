@@ -1,7 +1,8 @@
 import { useState } from "react";
+
 import ActivityIndicator from "@components/ActivityIndicator";
-import Header from "@components/Header";
 import CreateNotificationCard from "@components/CreateNotificationCard";
+import Header from "@components/Header";
 import IphoneComponent from "@components/IphoneComponent";
 
 import useAuthCheck from "@hooks/useAuthCheck";
@@ -22,7 +23,11 @@ export default function Create() {
             <ActivityIndicator />
           ) : (
             <>
-              <CreateNotificationCard setTitle={setTitle} setText={setText} setImage={setImage} />
+              <CreateNotificationCard
+                setTitle={setTitle}
+                setText={setText}
+                setImage={setImage}
+              />
               <IphoneComponent title={title} text={text} image={image} />
             </>
           )}

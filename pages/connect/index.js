@@ -1,10 +1,10 @@
-import Head from "next/head";
 import { useState } from "react";
 
 import ActivityIndicator from "@components/ActivityIndicator";
 import Button from "@components/Button";
 import Header from "@components/Header";
 import OutlineButton from "@components/OutlineButton";
+import Page from "@components/Page";
 import TextField from "@components/TextField";
 
 import useAuthCheck from "@hooks/useAuthCheck";
@@ -16,29 +16,7 @@ export default function Connect() {
 
   return (
     <>
-      <Head>
-        <title>Glue</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta property="og:title" content="tryglue.dev" />
-        <meta name="twitter:title" content="tryglue.dev" />
-        <meta name="twitter:card" content="summary_large_image" />
-
-        <meta
-          property="og:description"
-          content={`zapier for push notifications`}
-        />
-
-        <meta
-          name="twitter:description"
-          content={`zapier for push notifications`}
-        />
-
-        <meta name="twitter:image" content={`https://tryglue.dev/api/og`} />
-
-        <meta property="og:image" content={`https://tryglue.dev/api/og`} />
-
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <Page title="LOda" />
 
       <div className="flex flex-1 flex-col">
         <Header />
@@ -56,7 +34,7 @@ export default function Connect() {
                   Firebase / Firestore Account?
                 </div>
               </div>
-              <div className="flex items-start justify-start flex-col mt-3 py-4 text-left font-normal leading-none text-black text-opacity-80 md:text-xl md:font-light w-full px-4 sm:px-8 md:px-10">
+              <div className="mt-3 flex w-full flex-col items-start justify-start px-4 py-4 text-left font-normal leading-none text-black text-opacity-80 sm:px-8 md:px-10 md:text-xl md:font-light">
                 <p className="text-[16px] font-semibold">
                   Credentials (required)
                 </p>
@@ -96,7 +74,7 @@ export default function Connect() {
                   onTextChange={(value) => setProjectID(value)}
                   expandable={true}
                 />
-                <div className="flex flex-col items-center justify-center gap-x-4 sm:flex-row pt-4">
+                <div className="flex flex-col items-center justify-center gap-x-4 pt-4 sm:flex-row">
                   <Button>
                     <span className="px-4">
                       Yes, Continue to Firebase / Firestore

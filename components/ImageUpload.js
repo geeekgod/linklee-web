@@ -16,7 +16,7 @@ export default function ImageUpload({ labelText, onImageChange }) {
         style={{ display: "none" }}
         onChange={(e) => onImageChange(e.target.files[0])}
       />
-      <label 
+      <label
         className="cursor-pointer rounded-xl border border-[#DEE1E6]"
         onClick={() => document.getElementById(`upload-${labelText}`).click()}
         htmlFor="favicon-upload"

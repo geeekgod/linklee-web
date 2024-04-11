@@ -1,29 +1,28 @@
 import React from "react";
 
-import Button from "@components/Button";
-import ImageUpload from "@components/ImageUpload";
-import TextField from "@components/TextField";
+import Button from "./Button";
+import ImageUpload from "./ImageUpload";
+import TextField from "./TextField";
 
 export default function CreateNotificationCard({
   setTitle,
   setText,
   setImage,
 }) {
-
   const handleImage = (image) => {
     // convert File to base64
     // get image type first
-    console.log(image)
-    if(typeof image === 'string') {
-      setImage(image)
-      return
+    console.log(image);
+    if (typeof image === "string") {
+      setImage(image);
+      return;
     }
     const reader = new FileReader();
     reader.readAsDataURL(image);
     reader.onload = () => {
       setImage(reader.result);
     };
-  }
+  };
 
   return (
     <div className="flex h-[620px] w-[500px] flex-col items-center justify-start rounded-xl border border-[#D8D8D8] bg-[#FAFAFA]">
@@ -46,7 +45,10 @@ export default function CreateNotificationCard({
           onTextChange={(text) => setText(text)}
           expandable
         />
-        <ImageUpload onImageChange={(image) => handleImage(image)} labelText="Upload favicon(optional)" />
+        <ImageUpload
+          onImageChange={(image) => handleImage(image)}
+          labelText="Upload favicon(optional)"
+        />
         <Button className="w-full">
           <span className="px-4 py-3 text-sm font-medium leading-tight text-white">
             Continue

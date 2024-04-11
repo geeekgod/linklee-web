@@ -1,4 +1,4 @@
-import ActivityIndicator from "@components/ActivityIndicator";
+import ActivityIndicator from "./ActivityIndicator";
 
 export default function Button({
   children,

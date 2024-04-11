@@ -1,4 +1,3 @@
-import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 
@@ -6,8 +5,15 @@ import { useQueryClient } from "@tanstack/react-query";
 import { FcGoogle } from "react-icons/fc";
 
 import ActivityIndicator from "@components/ActivityIndicator";
+import Box from "@components/Box";
 import Button from "@components/Button";
+import Center from "@components/Center";
+import Column from "@components/Column";
+import Container from "@components/Container";
 import Header from "@components/Header";
+import Page from "@components/Page";
+import Row from "@components/Row";
+import Text from "@components/Text";
 
 import useCreateUser from "@hooks/mutations/useCreateUser";
 import useGoogleLogin from "@hooks/mutations/useGoogleLogin";
@@ -47,70 +53,51 @@ export default function Home() {
   }, [router, userData]);
 
   return (
-    <>
-      <Head>
-        <title>glue | zapier for push notifications</title>
-        <link rel="icon" href="/favicon.ico" />
-        <meta property="og:title" content="tryglue.dev" />
-        <meta name="twitter:title" content="tryglue.dev" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta property="og:image" content="https://tryglue.dev/api/og" />
-        <meta name="twitter:image" content="https://tryglue.dev/api/og" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <Container>
+      <Page title="glue | zapier for push notifications" />
 
-        <meta
-          property="og:description"
-          content="zapier for push notifications"
-        />
+      <Header />
 
-        <meta
-          name="twitter:description"
-          content="zapier for push notifications"
-        />
-      </Head>
+      {user === undefined || user ? (
+        <Center>
+          <ActivityIndicator />
+        </Center>
+      ) : (
+        <Center>
+          <Box className="md:h-[430px] md:w-[430px]">
+            <Column className="flex-1 items-center justify-center">
+              <Text className="text-[76px] font-normal md:text-[124px]">
+                glue.
+              </Text>
 
-      <div className="flex flex-1 flex-col">
-        <Header />
+              <Text className="mt-5 text-sm font-normal opacity-80 md:text-xl">
+                zapier for push notifications
+              </Text>
+            </Column>
 
-        <div className="flex flex-1 bg-bg md:items-center md:justify-center">
-          {user === undefined || user ? (
-            <ActivityIndicator />
-          ) : (
-            <div className="flex flex-1 flex-col md:h-[417px] md:w-[429px] md:flex-none md:rounded-xl md:border md:border-gray-200 md:border-opacity-80 md:bg-white">
-              <div className="flex flex-1 flex-col items-center justify-center">
-                <div className="text-[76px] font-normal leading-none text-black opacity-80 md:text-[124px]">
-                  glue.
-                </div>
+            <Column className="mx-5">
+              <Button
+                className="my-3"
+                icon={<FcGoogle className="mr-2" size={20} />}
+                loading={isLoggingInWithGoogle}
+                onClick={loginWithGoogle}
+              >
+                Sign In with Google
+              </Button>
 
-                <div className="mt-5 text-center text-sm font-normal leading-none text-black text-opacity-80 md:text-xl">
-                  zapier for push notifications
-                </div>
-              </div>
+              <Row className="mb-6 mt-2 justify-center">
+                <Text className="text-center text-xs font-normal opacity-60">
+                  For now,
+                </Text>
 
-              <div className="mx-5 flex flex-col">
-                <Button
-                  loading={isLoggingInWithGoogle}
-                  onClick={loginWithGoogle}
-                  icon={<FcGoogle className="mr-2" size={20} />}
-                  className="my-3"
-                >
-                  Sign In with Google
-                </Button>
-
-                <div className="mb-6 flex justify-center">
-                  <p className="text-center text-xs font-normal text-black text-opacity-60">
-                    For now,
-                  </p>
-
-                  <p className="ml-1 cursor-pointer text-center text-xs font-semibold text-black text-opacity-60 underline underline-offset-4">
-                    we only support Firebase Firestore
-                  </p>
-                </div>
-              </div>
-            </div>
-          )}
-        </div>
-      </div>
-    </>
+                <Text className="ml-1 cursor-pointer text-center text-xs font-semibold underline underline-offset-4 opacity-60">
+                  we only support Firebase Firestore
+                </Text>
+              </Row>
+            </Column>
+          </Box>
+        </Center>
+      )}
+    </Container>
   );
 }

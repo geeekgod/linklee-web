@@ -4,15 +4,20 @@ import { FiLogOut } from "react-icons/fi";
 
 import useUser from "@hooks/queries/useUser";
 
+import Column from "./Column";
+import Divider from "./Divider";
+import Row from "./Row";
+
 export default function Header() {
   const router = useRouter();
   const { logout, user } = useUser();
 
   return (
-    <div>
+    <Column>
+      <Row></Row>
       <div className="flex w-full flex-row items-center justify-between bg-bg px-4 py-3">
         <div
-          className="cursor-pointer text-lg font-medium text-black opacity-80 md:text-2xl"
+          className="cursor-pointer text-xl font-medium text-black opacity-80 md:text-2xl"
           onClick={() => router.push("/")}
         >
           glue.
@@ -38,7 +43,7 @@ export default function Header() {
         </div>
       </div>
 
-      <div className="flex h-[1px] bg-gray-200 opacity-60" />
-    </div>
+      <Divider />
+    </Column>
   );
 }
