@@ -63,7 +63,8 @@ export default function Connect() {
     }
 
     const handleCopy = () => {
-        navigator.clipboard.writeText(`https://linklee.xyz/${linkData?.username}`)
+        // navigator.clipboard.writeText(`https://linklee.xyz/${linkData?.username}`)
+        navigator.clipboard.writeText(`https://linklee-web.vercel.app/${linkData?.username}`)
         alert("Copied to clipboard")
     }
 
