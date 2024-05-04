@@ -114,7 +114,7 @@ export default function Home() {
           query: { username: usernameInput }
         })
       }
-      router.push(`/connect/${userData?.username}`);
+      router.push(`/connect`);
     }
   }, [router, userData]);
 
