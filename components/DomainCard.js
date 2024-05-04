@@ -49,8 +49,8 @@ export default function DomainCard({
                     placeholder={placeholderText ? placeholderText : "https://linklee.xyz/longurl"}
                     label="Destination"
                     onTextChange={(text) => setUrl(text)}
-                    bottomText="You can change this 3 times for free."
-                    disabled={numberUpdated >= 3}
+                    bottomText="You can change this 5 times for free."
+                    disabled={numberUpdated >= 5}
                 />
                 <Button onClick={buttonAction} className="w-full mt-4">
                     <span className="px-4 py-3 text-sm font-medium leading-tight text-white">

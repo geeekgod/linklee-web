@@ -27,7 +27,8 @@ import useCreateLink from "@hooks/mutations/useCreateLink";
 export default function Home() {
   const [isFetchingUsername, setIsFetchingUsername] = useState(false);
   const [usernameExists, setUsernameExists] = useState(true);
-  const [usernameError, setUsernameError] = useState(false);
+  const [usernameError, setUsernameError] = useState("");
+  const [usernameLengthError, setUsernameLengthError] = useState(false);
   const [usernameInput, setUsername] = useState("");
   const router = useRouter();
   const queryClient = useQueryClient();
@@ -79,14 +80,24 @@ export default function Home() {
   const handleUsername = async (username) => {
     setIsFetchingUsername(true);
     if (username?.length > 0) {
-      const data = await checkUsernameExistsfn(username);
-      if (data?.success === true) {
-        setUsernameExists(true);
-        setUsernameError(true);
-      } else if (data?.success === false) {
-        setUsername(username)
-        setUsernameExists(false);
-        setUsernameError(false);
+      if (username?.length > 20) {
+        setUsernameLengthError("Username should be less than 20 characters.");
+        setIsFetchingUsername(false);
+        return;
+      } else if (username?.length < 1) {
+        setUsernameLengthError("Username should be more than 1 character.");
+        setIsFetchingUsername(false);
+        return;
+      } else {
+        const data = await checkUsernameExistsfn(username);
+        if (data?.success === true) {
+          setUsernameExists(true);
+          setUsernameError(true);
+        } else if (data?.success === false) {
+          setUsername(username)
+          setUsernameExists(false);
+          setUsernameError(false);
+        }
       }
       setIsFetchingUsername(false);
     }
@@ -162,6 +173,13 @@ export default function Home() {
                   </Text>
                 )
               }
+              {
+                usernameLengthError && (
+                  <Text className="text-center text-xs text-red-500 font-semibold">
+                    {usernameLengthError}
+                  </Text>
+                )
+              }
 
               <Row className="mb-6 mt-2 justify-center">
                 <Text className="text-center text-xs font-normal opacity-60">
@@ -178,7 +196,7 @@ export default function Home() {
             *before you think this is just bit.ly,
           </Text>
           <Text className="mt-1.5 text-sm font-normal opacity-60 text-center italic">
-          changing source destination on bit.ly is paid
+            changing source destination on bit.ly is paid
           </Text>
         </Center>
       )}

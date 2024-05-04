@@ -11,6 +11,7 @@ export default function TextField({
   loading = false,
   lowercaseOnly = false,
   maxLength = 1000,
+  minLength = 0,
   onFocus,
   onTextChange,
   placeholder,
