@@ -109,7 +109,8 @@ export default function Connect() {
                                             buttonAction={handleUsername}
                                             setUrl={setNewLink}
                                             handleCopy={handleCopy}
-                                            numberUpdated={updatedData?.data?.updatedLinkCount || linkData?.updatedLinkCount}
+                                            placeholderText={updatedData?.url ? updatedData?.url : linkData?.url}
+                                            numberUpdated={updatedData?.updatedLinkCount || linkData?.updatedLinkCount}
                                         />
                                     ) :
                                     (
@@ -120,7 +121,7 @@ export default function Connect() {
                                                 disabledInputText={`https://linklee.xyz/${linkData?.username}`}
                                                 buttonText="Connect"
                                                 buttonAction={handleUsername}
-                                                placeholderText={linkData?.url}
+                                                placeholderText={updatedData?.url ? updatedData?.url : linkData?.url}
                                                 setUrl={setNewLink}
                                                 handleCopy={handleCopy}
                                                 numberUpdated={updatedData?.data?.updatedLinkCount || linkData?.updatedLinkCount}
@@ -134,7 +135,7 @@ export default function Connect() {
                                                 buttonAction={handleUsername}
                                                 setUrl={setNewLink}
                                                 handleCopy={handleCopy}
-                                                placeholderText={linkData?.url}
+                                                placeholderText={updatedData?.url ? updatedData?.url : linkData?.url}
                                                 numberUpdated={updatedData?.data?.updatedLinkCount || linkData?.updatedLinkCount}
                                             />
                                         )

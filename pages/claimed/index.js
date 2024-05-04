@@ -19,7 +19,6 @@ export default function Home() {
 
     const { ready } = useAuthCheck();
 
-    console.log("READY ", ready)
 
     return (
         <Container>

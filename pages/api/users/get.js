@@ -2,7 +2,7 @@ import Users from "@helpers/users";
 
 export default async function handler(req, res) {
   try {
-    if (req.method === "POST" || req.method === "PUT" || req.method === "GET") {
+    if (req.method === "POST") {
       const { userId } = req?.body;
       const user = await Users.get(userId);
 

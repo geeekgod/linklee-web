@@ -2,7 +2,7 @@ import Links from "@helpers/links";
 
 export default async function handler(req, res) {
     try {
-        if (req.method === "POST" || req.method === "PUT" || req.method === "GET") {
+        if (req.method === "POST") {
             const { id, data } = req?.body;
             const updated = await Links.updateLink(id, data);
 
