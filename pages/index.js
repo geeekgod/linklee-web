@@ -63,7 +63,7 @@ export default function Home() {
             uid: userData?.user?.uid,
             username: usernameInput,
             updatedLinkCount: 0,
-            url: "https://linklee.app/",
+            url: "https://linklee.xyz/",
             createdAt: new Date().toISOString(),
             updatedAt: new Date().toISOString(),
           },

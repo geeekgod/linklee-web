@@ -39,7 +39,7 @@ export default function Connect() {
             console.log("RES ", res)
             setUpdatedData(res)
             setNewLink("")
-            window.location.reload()
+            // window.location.reload()
         } else if (newLink === "" && type === "disconnect") {
             const res = await updateUsername({
                 id: linkData?.uid,
@@ -59,7 +59,7 @@ export default function Connect() {
     }
 
     const handleCopy = () => {
-        navigator.clipboard.writeText(`https://linklee.app/${linkData?.username}`)
+        navigator.clipboard.writeText(`https://linklee.xyz/${linkData?.username}`)
         alert("Copied to clipboard")
     }
 
@@ -81,7 +81,7 @@ export default function Connect() {
                                         <DomainCard
                                             title="Connect your link to any domain"
                                             titleSecondary="Send it to your git, twitter, profile or wherever you want"
-                                            disabledInputText={`https://linklee.app/${linkData?.username}`}
+                                            disabledInputText={`https://linklee.xyz/${linkData?.username}`}
                                             buttonText="Connect"
                                             buttonAction={handleUsername}
                                             setUrl={setNewLink}
@@ -92,7 +92,7 @@ export default function Connect() {
                                     (
                                         <ChangeDomainCard
                                             title="Your link is connected"
-                                            disabledInputText={`https://linklee.app/${updatedData ? updatedData?.data?.username : linkData?.username}`}
+                                            disabledInputText={`https://linklee.xyz/${updatedData ? updatedData?.data?.username : linkData?.username}`}
                                             inputLabel="Destination"
                                             buttonText="Change Destination"
                                             buttonAction={handleUsername}

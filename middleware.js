@@ -14,7 +14,7 @@ export async function middleware(request) {
                 username: newPath
             })
             let usernameData = await usernameRes?.data
-            if (usernameData?.link?.url?.length > 0 && usernameData?.link?.url !== null && usernameData?.link?.url !== undefined && usernameData?.link?.url !== "" && !usernameData?.link?.url?.includes("linklee.app/")) {
+            if (usernameData?.link?.url?.length > 0 && usernameData?.link?.url !== null && usernameData?.link?.url !== undefined && usernameData?.link?.url !== "" && !usernameData?.link?.url?.includes("linklee.xyz/")) {
                 return NextResponse.redirect(new URL(usernameData?.link?.url))
             } else {
                 return NextResponse.next()
