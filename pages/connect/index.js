@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import ActivityIndicator from "@components/ActivityIndicator";
 import Header from "@components/Header";
@@ -9,10 +9,20 @@ import Center from "@components/Center";
 import Box from "@components/Box";
 import Column from "@components/Column";
 import Text from "@components/Text";
+import useLinks from "@hooks/queries/useLinks";
+import { useRouter } from "next/router";
 
 export default function Connect() {
 
   const { ready } = useAuthCheck();
+  const { linkData } = useLinks()
+  const router = useRouter();
+
+  useEffect(() => {
+    if(linkData?.username) {
+      router.push(`/connect/${linkData?.username}`)
+    }
+  }, [!!linkData?.username])
 
   return (
     <>

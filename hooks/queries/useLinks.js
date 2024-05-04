@@ -22,7 +22,6 @@ export default function useLinks() {
   }
 
   useEffect(() => {
-    console.log(user?.uid);
     if (user?.uid) {
       queryClient.invalidateQueries({ queryKey: ["link", user?.uid] });
     }

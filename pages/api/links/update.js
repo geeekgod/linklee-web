@@ -8,6 +8,7 @@ export default async function handler(req, res) {
         res.send({
             data: {
                 updated: updated ? true : false,
+                updatedData: updated,
             },
         });
     } catch (error) {

@@ -86,6 +86,7 @@ export default function Home() {
       } else if (data?.success === false) {
         setUsername(username)
         setUsernameExists(false);
+        setUsernameError(false);
       }
       setIsFetchingUsername(false);
     }

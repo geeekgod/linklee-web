@@ -27,6 +27,16 @@ const getLink = async (id) => {
     return null;
 };
 
+const getLinkFromUsername = async (username) => {
+    const link = await links.where("username", "==", username).get();
+
+    if (link.docs.length > 0) {
+        return { id: link.docs[0].id, ...link.docs[0].data() };
+    }
+
+    return null;
+}
+
 const updateLink = async (id, data) => {
     const updated = await links.doc(id).set(data, { merge: true });
     return updated ? { id, ...data } : null;
@@ -37,4 +47,4 @@ const checkUsernameExists = async (username) => {
     return link.docs.length > 0;
 }
 
-export default { createLink, getLink, updateLink, checkUsernameExists };
+export default { createLink, getLink, getLinkFromUsername, updateLink, checkUsernameExists };

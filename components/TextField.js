@@ -17,11 +17,14 @@ export default function TextField({
   prefix,
   required = false,
   value,
+  mainClassName,
+  disabled=false,
+  bottomText,
 }) {
   const [focused, setFocused] = useState(false);
 
   return (
-    <div>
+    <div className={mainClassName}>
       {label ? (
         <div className="mb-2 text-xs font-normal leading-none text-neutral-700">
           {`${label} ${required ? "*" : ""}`}
@@ -64,9 +67,10 @@ export default function TextField({
       ) : (
         <div className="relative">
           <div
-            className={`flex flex-row items-center overflow-hidden rounded-md border-[1px] border-opacity-60 bg-white 
+            className={`flex flex-row items-center overflow-hidden rounded-md border-[1px] border-opacity-60 
               ${prefix ? "pr-3" : "px-3"}
             ${error ? "border-red-500" : focused ? "border-black" : null}
+            ${disabled ? "bg-gray-100" : "bg-white"}
             `}
           >
             <div>{icon ? icon : null}</div>
@@ -94,6 +98,7 @@ export default function TextField({
               }
               placeholder={placeholder || ""}
               value={value}
+              disabled={disabled}
             />
 
             {loading ? <ActivityIndicator mode="light" size="small" /> : null}
@@ -106,6 +111,14 @@ export default function TextField({
               {`${value?.length}/${maxLength}`}
             </p>
           ) : null}
+
+          {
+            bottomText && (
+              <p className="absolute mt-2 text-xs font-normal leading-none text-black text-opacity-40 right-1">
+                {bottomText}
+              </p>
+            )
+          }
         </div>
       )}
     </div>
