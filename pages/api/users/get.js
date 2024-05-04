@@ -2,19 +2,21 @@ import Users from "@helpers/users";
 
 export default async function handler(req, res) {
   try {
-    const { userId } = req?.body;
-    const user = await Users.get(userId);
+    if (req.method === "POST" || req.method === "PUT" || req.method === "GET") {
+      const { userId } = req?.body;
+      const user = await Users.get(userId);
 
-    if (!user) {
-      throw new Error("User not found");
+      if (!user) {
+        throw new Error("User not found");
+      }
+
+      res.send({
+        data: {
+          success: true,
+          user,
+        },
+      });
     }
-
-    res.send({
-      data: {
-        success: true,
-        user,
-      },
-    });
   } catch (error) {
     res.send({ error: error.message });
   }
