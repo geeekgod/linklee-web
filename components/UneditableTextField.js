@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import ActivityIndicator from "./ActivityIndicator";
 
-export default function TextField({
+export default function UneditableTextField({
   className,
   error = false,
   expandable = false,
@@ -70,7 +70,7 @@ export default function TextField({
             className={`flex flex-row items-center overflow-hidden rounded-md border-[1px] border-opacity-60 
               ${prefix ? "pr-3" : "px-3"}
             ${error ? "border-red-500" : focused ? "border-black" : null}
-            ${disabled ? "bg-gray-100" : "bg-white"}
+                bg-white
             `}
           >
             <div>{icon ? icon : null}</div>

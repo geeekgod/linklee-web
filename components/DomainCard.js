@@ -15,6 +15,7 @@ export default function DomainCard({
     buttonText,
     buttonAction,
     numberUpdated,
+    placeholderText,
     handleCopy
 }) {
 
@@ -45,7 +46,7 @@ export default function DomainCard({
                 </div>
                 <TextField
                     mainClassName="w-full"
-                    placeholder="https://linklee.xyz/longurl"
+                    placeholder={placeholderText ? placeholderText : "https://linklee.xyz/longurl"}
                     label="Destination"
                     onTextChange={(text) => setUrl(text)}
                     bottomText="You can change this 3 times for free."

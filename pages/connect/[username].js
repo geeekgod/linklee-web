@@ -20,6 +20,7 @@ export default function Connect() {
     const { updateUsername } = useCreateLink()
     const [url, setUrl] = useState("")
     const [newLink, setNewLink] = useState("")
+    const [connectNewLink, setConnectNewLink] = useState(false)
 
     const checkValidUrl = (url) => {
         let urlRegEx = new RegExp(
@@ -29,9 +30,9 @@ export default function Connect() {
     }
 
 
-    const handleUsername = async (type = "change") => {
+    const handleUsername = async (type = "connect") => {
         console.log("NEW LINK ", newLink)
-        if (checkValidUrl(newLink) && type === "change") {
+        if (checkValidUrl(newLink) && type === "connect") {
             const res = await updateUsername({
                 id: linkData?.uid,
                 data: {
@@ -43,7 +44,10 @@ export default function Connect() {
             console.log("RES ", res)
             setUpdatedData(res)
             setNewLink("")
+            setConnectNewLink(false)
             // window.location.reload()
+        } else if (type === "change") {
+            setConnectNewLink(true)
         } else if (newLink === "" && type === "disconnect") {
             const res = await updateUsername({
                 id: linkData?.uid,
@@ -56,6 +60,7 @@ export default function Connect() {
             console.log("RES ", res)
             setUpdatedData(res)
             setNewLink("")
+            setConnectNewLink(false)
             window.location.reload()
         } else {
             alert("Invalid URL")
@@ -63,8 +68,7 @@ export default function Connect() {
     }
 
     const handleCopy = () => {
-        // navigator.clipboard.writeText(`https://linklee.xyz/${linkData?.username}`)
-        navigator.clipboard.writeText(`https://linklee-web.vercel.app/${linkData?.username}`)
+        navigator.clipboard.writeText(`https://linklee.xyz/${linkData?.username}`)
         alert("Copied to clipboard")
     }
 
@@ -95,17 +99,31 @@ export default function Connect() {
                                         />
                                     ) :
                                     (
-                                        <ChangeDomainCard
-                                            title="Your link is connected"
-                                            disabledInputText={`https://linklee.xyz/${updatedData ? updatedData?.data?.username : linkData?.username}`}
-                                            inputLabel="Destination"
-                                            buttonText="Change Destination"
-                                            buttonAction={handleUsername}
-                                            setUrl={setNewLink}
-                                            handleCopy={handleCopy}
-                                            placeholderText={updatedData?.data?.url ? updatedData?.data?.url : linkData?.url}
-                                            numberUpdated={updatedData?.data?.updatedLinkCount || linkData?.updatedLinkCount}
-                                        />
+                                        connectNewLink ? (
+                                            <DomainCard
+                                                title="Connect your link to any domain"
+                                                titleSecondary="Send it to your git, twitter, profile or wherever you want"
+                                                disabledInputText={`https://linklee.xyz/${linkData?.username}`}
+                                                buttonText="Connect"
+                                                buttonAction={handleUsername}
+                                                placeholderText={linkData?.url}
+                                                setUrl={setNewLink}
+                                                handleCopy={handleCopy}
+                                                numberUpdated={updatedData?.data?.updatedLinkCount || linkData?.updatedLinkCount}
+                                            />
+                                        ) : (
+                                            <ChangeDomainCard
+                                                title="Your link is connected"
+                                                disabledInputText={`https://linklee.xyz/${updatedData ? updatedData?.data?.username : linkData?.username}`}
+                                                inputLabel="Destination"
+                                                buttonText="Change Destination"
+                                                buttonAction={handleUsername}
+                                                setUrl={setNewLink}
+                                                handleCopy={handleCopy}
+                                                placeholderText={updatedData?.data?.url ? updatedData?.data?.url : linkData?.url}
+                                                numberUpdated={updatedData?.data?.updatedLinkCount || linkData?.updatedLinkCount}
+                                            />
+                                        )
                                     )
                                 }
                             </Center>
