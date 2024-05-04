@@ -19,7 +19,7 @@ export default function Connect() {
   const router = useRouter();
 
   useEffect(() => {
-    if(linkData?.username) {
+    if (linkData?.username) {
       router.push(`/connect/${linkData?.username}`)
     }
   }, [!!linkData?.username])
@@ -35,15 +35,19 @@ export default function Connect() {
           {!ready ? (
             <ActivityIndicator />
           ) : (
-            <Center>
-              <Box className="md:h-[400px] md:w-[430px] !bg-[#F2F4F5] py-4">
-                <Column className="flex-1 items-center justify-center">
-                  <Text className="text-[32px] font-normal md:text-[48px]">
-                    Page not found
-                  </Text>  
-                </Column>
-              </Box>
-            </Center>
+            linkData ? (
+              <Center>
+                <Box className="md:h-[400px] md:w-[430px] !bg-[#F2F4F5] py-4">
+                  <Column className="flex-1 items-center justify-center">
+                    <Text className="text-[32px] font-normal md:text-[48px]">
+                      Page not found
+                    </Text>
+                  </Column>
+                </Box>
+              </Center>
+            ) : (
+              <ActivityIndicator />
+            )
           )}
         </div>
       </div>
