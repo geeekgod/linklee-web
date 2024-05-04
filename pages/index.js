@@ -1,7 +1,8 @@
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import { useQueryClient } from "@tanstack/react-query";
+import _, { set } from 'lodash';
 
 import ActivityIndicator from "@components/ActivityIndicator";
 import Box from "@components/Box";
@@ -17,11 +18,17 @@ import Text from "@components/Text";
 import useCreateUser from "@hooks/mutations/useCreateUser";
 import useGoogleLogin from "@hooks/mutations/useGoogleLogin";
 import useUser from "@hooks/queries/useUser";
+import useLinks from "@hooks/queries/useLinks";
 
 import { getHiResDp } from "@utils/helpers";
 import TextField from "@components/TextField";
+import useCreateLink from "@hooks/mutations/useCreateLink";
 
 export default function Home() {
+  const [isFetchingUsername, setIsFetchingUsername] = useState(false);
+  const [usernameExists, setUsernameExists] = useState(true);
+  const [usernameError, setUsernameError] = useState(false);
+  const [usernameInput, setUsername] = useState("");
   const router = useRouter();
   const queryClient = useQueryClient();
   const { user, userData } = useUser();
@@ -31,6 +38,12 @@ export default function Home() {
       queryClient.invalidateQueries({ queryKey: ["user"] });
     },
   });
+
+  const { createLink } = useCreateLink({
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["link", user?.uid] });
+    },
+  })
 
   const { isLoggingInWithGoogle, loginWithGoogle } = useGoogleLogin({
     onSuccess: async (userData) => {
@@ -43,11 +56,52 @@ export default function Home() {
         },
         userId: userData?.user?.uid,
       });
+      console.log("USERNAME INPUT ", usernameInput)
+      if (usernameInput?.length > 0) {
+        createLink({
+          data: {
+            uid: userData?.user?.uid,
+            username: usernameInput,
+            updatedLinkCount: 0,
+            url: "https://linklee.app/",
+            createdAt: new Date().toISOString(),
+            updatedAt: new Date().toISOString(),
+          },
+          userId: userData?.user?.uid,
+        })
+      }
+
     },
   });
 
+  const { checkUsernameExistsfn } = useLinks();
+
+  const handleUsername = async (username) => {
+    setIsFetchingUsername(true);
+    if (username?.length > 0) {
+      const data = await checkUsernameExistsfn(username);
+      if (data?.success === true) {
+        setUsernameExists(true);
+        setUsernameError(true);
+      } else if (data?.success === false) {
+        setUsername(username)
+        setUsernameExists(false);
+      }
+      setIsFetchingUsername(false);
+    }
+  }
+
+  const debouncedCheckUsernameExists = _.debounce(handleUsername, 800);
+
+
   useEffect(() => {
     if (userData) {
+      if (!usernameExists) {
+        router.push({
+          pathname: '/claimed',
+          query: { username: usernameInput }
+        })
+      }
       router.push("/connect");
     }
   }, [router, userData]);
@@ -76,21 +130,44 @@ export default function Home() {
             </Column>
 
             <Column className="mx-5">
-              <TextField prefix="link.app/" placeholder="yourname" onTextChange={(text) => { console.log(text) }} className="placeholder:italic" />
+              <TextField
+                prefix="link.app/"
+                placeholder="yourname"
+                onTextChange={(text) => {
+                  debouncedCheckUsernameExists(text)
+                }}
+                className="placeholder:italic"
+              />
               <Button
                 className="my-3"
                 loading={isLoggingInWithGoogle}
                 onClick={loginWithGoogle}
+                disabled={usernameExists}
               >
                 Claim with Google
               </Button>
+
+              {
+                isFetchingUsername && (
+                  <div className="flex items-center justify-center">
+                    <ActivityIndicator size="small" />
+                  </div>
+                )
+              }
+              {
+                usernameError && (
+                  <Text className="text-center text-xs text-red-500 font-semibold">
+                    Username already exists
+                  </Text>
+                )
+              }
 
               <Row className="mb-6 mt-2 justify-center">
                 <Text className="text-center text-xs font-normal opacity-60">
                   Already a user?
                 </Text>
 
-                <Text className="ml-1 cursor-pointer text-center text-xs font-semibold underline underline-offset-4 opacity-60">
+                <Text onClick={loginWithGoogle} className={`ml-1 cursor-pointer text-center text-xs font-semibold underline underline-offset-4 opacity-60`}>
                   Login
                 </Text>
               </Row>

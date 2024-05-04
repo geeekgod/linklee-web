@@ -3,11 +3,12 @@ import { toast } from "react-toastify";
 
 import fetcher from "@utils/fetcher";
 
-export default function useCreateUser(props = {}) {
+export default function useCreateLink(props = {}) {
   const { onError, onSuccess } = props;
 
   const { isPending, mutate } = useMutation({
     mutationFn: async (payload) => {
+      console.log("PAYLOAD ", payload)
       const { data, error } = await fetcher("/api/links/create", payload);
 
       if (error) {
@@ -22,6 +23,7 @@ export default function useCreateUser(props = {}) {
     },
     onSuccess,
   });
+
 
   const { isPending: isUpdatingUsername, mutate: updateUsername } = useMutation({
     mutationFn: async (payload) => {
@@ -39,8 +41,6 @@ export default function useCreateUser(props = {}) {
     },
     onSuccess,
   });
-
-
   return {
     creatingLink: isPending,
     createLink: mutate,

@@ -2,8 +2,8 @@ import Links from "@helpers/links";
 
 export default async function handler(req, res) {
     try {
-        const { id, data } = req?.body;
-        const created = await Links.createLink(id, data);
+        const { userId, data } = req?.body;
+        const created = await Links.createLink(userId, data);
 
         res.send({
             data: {
