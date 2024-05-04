@@ -42,7 +42,14 @@ export default function Connect() {
                 }
             })
             console.log("RES ", res)
-            setUpdatedData(res)
+            setUpdatedData({
+                url: newLink,
+                updatedLinkCount: (+linkData?.updatedLinkCount) + 1,
+                username: linkData?.username,
+                uid: linkData?.uid,
+                createdAt: linkData?.createdAt,
+                updatedAt: new Date().toISOString()
+            })
             setNewLink("")
             setConnectNewLink(false)
             // window.location.reload()
@@ -58,7 +65,14 @@ export default function Connect() {
                 }
             })
             console.log("RES ", res)
-            setUpdatedData(res)
+            setUpdatedData({
+                url: "https://linklee.xyz",
+                updatedLinkCount: (+linkData?.updatedLinkCount) + 1,
+                username: linkData?.username,
+                uid: linkData?.uid,
+                createdAt: linkData?.createdAt,
+                updatedAt: new Date().toISOString()
+            })
             setNewLink("")
             setConnectNewLink(false)
             window.location.reload()
