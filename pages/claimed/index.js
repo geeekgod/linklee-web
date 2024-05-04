@@ -38,7 +38,7 @@ export default function Home() {
                             </Text>
 
                             <Text className="mt-5 text-[#979797] text-sm font-normal opacity-80 md:text-xl">
-                                link.app/{username} 🎊
+                                linklee.xyz/{username} 🎊
                             </Text>
                         </Column>
 

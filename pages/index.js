@@ -132,7 +132,7 @@ export default function Home() {
 
             <Column className="mx-5">
               <TextField
-                prefix="link.app/"
+                prefix="linklee.xyz/"
                 placeholder="yourname"
                 onTextChange={(text) => {
                   debouncedCheckUsernameExists(text)
