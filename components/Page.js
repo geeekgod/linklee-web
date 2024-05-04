@@ -19,9 +19,9 @@ export default function Page({ title }) {
         content={`a link you can redirect anywhere`}
       />
 
-      <meta name="twitter:image" content={`https://linklee.xyz/api/og`} />
+      <meta name="twitter:image" content={`https://linklee-web.vercel.app/api/og`} />
 
-      <meta property="og:image" content={`https://linklee.xyz/api/og`} />
+      <meta property="og:image" content={`https://linklee-web.vercel.app/api/og`} />
 
       <link rel="icon" href="/favicon.ico" />
     </Head>

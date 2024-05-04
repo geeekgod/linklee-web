@@ -10,7 +10,7 @@ export async function middleware(request) {
         // remove trailing slash
         if (pathname !== '/' && pathname.startsWith('/')) {
             let newPath = pathname.slice(1)
-            const usernameRes = await fetcher("http://localhost:3000/api/links/get-username", {
+            const usernameRes = await fetcher("https://linklee-web.vercel.app/api/links/get-username", {
                 username: newPath
             })
             let usernameData = await usernameRes?.data
