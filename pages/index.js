@@ -121,11 +121,11 @@ export default function Home() {
         <Center>
           <Box className="md:h-[400px] md:w-[430px]">
             <Column className="flex-1 items-center justify-center">
-              <Text className="text-[76px] font-normal md:text-[124px]">
-                name.
+              <Text className="text-[76px] font-normal md:text-[96px] opacity-80">
+                linklee.
               </Text>
 
-              <Text className="mt-5 text-sm font-normal opacity-80 md:text-xl">
+              <Text className="mt-2 text-sm font-normal opacity-80 md:text-xl">
                 a link you can redirect anywhere
               </Text>
             </Column>
@@ -174,6 +174,12 @@ export default function Home() {
               </Row>
             </Column>
           </Box>
+          <Text className="mt-8 text-sm font-normal opacity-60 text-center italic">
+            *before you think this is just bit.ly,
+          </Text>
+          <Text className="mt-1.5 text-sm font-normal opacity-60 text-center italic">
+          changing source destination on bit.ly is paid
+          </Text>
         </Center>
       )}
     </Container>
