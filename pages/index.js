@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 import { useQueryClient } from "@tanstack/react-query";
-import _, { set } from 'lodash';
+import _ from 'lodash';
 
 import ActivityIndicator from "@components/ActivityIndicator";
 import Box from "@components/Box";
@@ -59,6 +59,7 @@ export default function Home() {
       });
       console.log("USERNAME INPUT ", usernameInput)
       if (usernameInput?.length > 0) {
+        console.log("USER DATA 1 ", userData)
         createLink({
           data: {
             uid: userData?.user?.uid,

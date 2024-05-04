@@ -104,7 +104,7 @@ export default function Connect() {
                                         <DomainCard
                                             title="Connect your link to any domain"
                                             titleSecondary="Send it to your git, twitter, profile or wherever you want"
-                                            disabledInputText={`https://linklee.xyz/${linkData?.username}`}
+                                            disabledInputText={`https://linklee.xyz/${updatedData?.username ? updatedData?.username : linkData?.username}`}
                                             buttonText="Connect"
                                             buttonAction={handleUsername}
                                             setUrl={setNewLink}
@@ -118,7 +118,7 @@ export default function Connect() {
                                             <DomainCard
                                                 title="Connect your link to any domain"
                                                 titleSecondary="Send it to your git, twitter, profile or wherever you want"
-                                                disabledInputText={`https://linklee.xyz/${linkData?.username}`}
+                                                disabledInputText={`https://linklee.xyz/${updatedData?.username ? updatedData?.username : linkData?.username}`}
                                                 buttonText="Connect"
                                                 buttonAction={handleUsername}
                                                 placeholderText={updatedData?.url ? updatedData?.url : linkData?.url}
@@ -129,7 +129,7 @@ export default function Connect() {
                                         ) : (
                                             <ChangeDomainCard
                                                 title="Your link is connected"
-                                                disabledInputText={`https://linklee.xyz/${updatedData ? updatedData?.data?.username : linkData?.username}`}
+                                                disabledInputText={`https://linklee.xyz/${updatedData ? updatedData?.username : linkData?.username}`}
                                                 inputLabel="Destination"
                                                 buttonText="Change Destination"
                                                 buttonAction={handleUsername}
