@@ -103,7 +103,7 @@ export default function Home() {
           query: { username: usernameInput }
         })
       }
-      router.push("/connect");
+      router.push(`/connect/${userData?.username}`);
     }
   }, [router, userData]);
 
