@@ -120,7 +120,7 @@ export default function Connect() {
                                                 buttonAction={handleUsername}
                                                 setUrl={setNewLink}
                                                 handleCopy={handleCopy}
-                                                placeholderText={updatedData?.data?.url ? updatedData?.data?.url : linkData?.url}
+                                                placeholderText={linkData?.url}
                                                 numberUpdated={updatedData?.data?.updatedLinkCount || linkData?.updatedLinkCount}
                                             />
                                         )

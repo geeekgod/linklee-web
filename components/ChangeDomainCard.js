@@ -23,10 +23,12 @@ export default function ChangeDomainCard({
 
     return (
         <div className="flex h-[420px] w-[500px] flex-col items-center justify-start rounded-xl border border-[#D8D8D8] bg-[#FAFAFA]">
-            <div className="border-b px-4 py-4 sm:px-8 sm:py-8 w-full">
+            <div className="border-b px-4 py-4 sm:px-8 sm:py-8 w-full flex flex-row items-center justify-start">
                 <h1 className="text-lg font-medium">
                     {title}
                 </h1>
+                {/* Green dot */}
+                <div className="w-2 h-2 bg-green-500 rounded-full ml-1.5"></div>
             </div>
             <div className="flex w-full flex-col items-start justify-center gap-y-4 px-4 py-4 sm:gap-y-8 sm:px-8 sm:py-8">
                 <div className="flex flex-row items-center justify-evenly w-full">
@@ -44,11 +46,11 @@ export default function ChangeDomainCard({
                         </Button>
                     </div>
                     {/* small black circle */}
-                    <div className="w-3 h-1.5 bg-black rounded-full mt-4"></div>
+                    <div className="w-3 h-1 bg-black rounded-full mt-4 ml-0.5"></div>
                     {/* horizontal line */}
                     <div className="w-[50%] h-[1px] bg-black mt-4"></div>
                     {/* small black circle */}
-                    <div className="w-3 h-1.5 bg-black rounded-full mt-4"></div>
+                    <div className="w-3 h-1 bg-black rounded-full mt-4 mr-0.5"></div>
 
                     <UneditableTextField
                         mainClassName="w-full !bg-white"
