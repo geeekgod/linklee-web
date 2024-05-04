@@ -64,15 +64,18 @@ export default function TextField({
       ) : (
         <div className="relative">
           <div
-            className={`flex flex-row items-center overflow-hidden rounded-md border-[1px] border-opacity-60 bg-white px-3 
+            className={`flex flex-row items-center overflow-hidden rounded-md border-[1px] border-opacity-60 bg-white 
+              ${prefix ? "pr-3" : "px-3"}
             ${error ? "border-red-500" : focused ? "border-black" : null}
             `}
           >
             <div>{icon ? icon : null}</div>
 
             {prefix ? (
-              <div className="mr-[1px] text-center text-sm font-normal leading-none text-black text-opacity-60">
-                {prefix}
+              <div className="flex items-center justify-center h-[46px] bg-[#D8D8D8] mr-2">
+                <div className="px-4 font-medium text-center text-sm leading-none text-black text-opacity-60">
+                  {prefix}
+                </div>
               </div>
             ) : null}
 

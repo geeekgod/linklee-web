@@ -15,3 +15,5 @@ if (admin.apps.length === 0) {
 export const firestore = app.firestore();
 
 export const users = firestore.collection("users");
+
+export const links = firestore.collection("links");

@@ -28,7 +28,7 @@ export default function Connect() {
             <div className="flex flex-1 flex-col items-center justify-center md:h-[450px] md:w-[675px] md:flex-none md:rounded-xl md:border md:border-gray-200 md:border-opacity-80 md:bg-[#F2F4F5]">
               <div className="flex flex-col items-center justify-center">
                 <div className="text-center text-[24px] font-bold leading-none text-black text-opacity-95 md:text-[36px] md:font-medium">
-                  Allow Glue to access your
+                  Allow Linklee to access your
                 </div>
                 <div className="text-center text-[24px] font-bold leading-none text-black text-opacity-95 md:text-[36px] md:font-medium">
                   Firebase / Firestore Account?

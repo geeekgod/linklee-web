@@ -2,7 +2,6 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 
 import { useQueryClient } from "@tanstack/react-query";
-import { FcGoogle } from "react-icons/fc";
 
 import ActivityIndicator from "@components/ActivityIndicator";
 import Box from "@components/Box";
@@ -20,6 +19,7 @@ import useGoogleLogin from "@hooks/mutations/useGoogleLogin";
 import useUser from "@hooks/queries/useUser";
 
 import { getHiResDp } from "@utils/helpers";
+import TextField from "@components/TextField";
 
 export default function Home() {
   const router = useRouter();
@@ -54,7 +54,7 @@ export default function Home() {
 
   return (
     <Container>
-      <Page title="glue | zapier for push notifications" />
+      <Page title="linklee | a link you can redirect anywhere" />
 
       <Header />
 
@@ -64,34 +64,34 @@ export default function Home() {
         </Center>
       ) : (
         <Center>
-          <Box className="md:h-[430px] md:w-[430px]">
+          <Box className="md:h-[400px] md:w-[430px]">
             <Column className="flex-1 items-center justify-center">
               <Text className="text-[76px] font-normal md:text-[124px]">
-                glue.
+                name.
               </Text>
 
               <Text className="mt-5 text-sm font-normal opacity-80 md:text-xl">
-                zapier for push notifications
+                a link you can redirect anywhere
               </Text>
             </Column>
 
             <Column className="mx-5">
+              <TextField prefix="link.app/" placeholder="yourname" onTextChange={(text) => { console.log(text) }} className="placeholder:italic" />
               <Button
                 className="my-3"
-                icon={<FcGoogle className="mr-2" size={20} />}
                 loading={isLoggingInWithGoogle}
                 onClick={loginWithGoogle}
               >
-                Sign In with Google
+                Claim with Google
               </Button>
 
               <Row className="mb-6 mt-2 justify-center">
                 <Text className="text-center text-xs font-normal opacity-60">
-                  For now,
+                  Already a user?
                 </Text>
 
                 <Text className="ml-1 cursor-pointer text-center text-xs font-semibold underline underline-offset-4 opacity-60">
-                  we only support Firebase Firestore
+                  Login
                 </Text>
               </Row>
             </Column>

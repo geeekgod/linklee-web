@@ -20,7 +20,7 @@ export default function Header() {
           className="cursor-pointer text-xl font-medium text-black opacity-80 md:text-2xl"
           onClick={() => router.push("/")}
         >
-          glue.
+          name.
         </div>
 
         <div className="flex items-center gap-x-2">
