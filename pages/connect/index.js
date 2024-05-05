@@ -76,7 +76,7 @@ export default function Connect() {
     }
   }
 
-  const debouncedCheckUsernameExists = _.debounce(handleUsername, 800);
+  const debouncedCheckUsernameExists = _.debounce(handleUsername, 500);
 
   const handleClaim = async () => {
     createLink({

@@ -104,7 +104,7 @@ export default function Home() {
     }
   }
 
-  const debouncedCheckUsernameExists = _.debounce(handleUsername, 800);
+  const debouncedCheckUsernameExists = _.debounce(handleUsername, 500);
 
 
   useEffect(() => {
