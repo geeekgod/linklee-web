@@ -1,5 +1,18 @@
 import { NextResponse } from 'next/server'
-import fetcher from '@utils/fetcher'
+
+async function nativeFetch(url, payload) {
+    console.log("fetching", url, payload)
+    const req = await fetch(url, {
+        body: JSON.stringify(payload),
+        headers: { "Content-Type": "application/json" },
+        method: "POST",
+    });
+    let data = await req.json()
+    console.log("fetched", data)
+
+    return data;
+}
+
 
 export async function middleware(request) {
     if (request.nextUrl.pathname.startsWith('/api') || request.nextUrl.pathname.startsWith('/connect') || request.nextUrl.pathname.startsWith('/claimed') || request.nextUrl.pathname.startsWith('/_next') || request.nextUrl.pathname.startsWith('/favicon.ico') || request.nextUrl.pathname.startsWith('/manifest.json') || request.nextUrl.pathname.startsWith('/service-worker.js') || request.nextUrl.pathname.startsWith('/robots.txt') || request.nextUrl.pathname.startsWith('/sitemap.xml')) {
@@ -9,7 +22,7 @@ export async function middleware(request) {
         // remove trailing slash
         if (pathname !== '/' && pathname.startsWith('/')) {
             let newPath = pathname.slice(1)
-            const usernameRes = await fetcher("https://linklee.xyz/api/links/get-username", {
+            const usernameRes = await nativeFetch("https://linklee.xyz/api/links/get-username", {
                 username: newPath
             })
             let usernameData = await usernameRes?.data
