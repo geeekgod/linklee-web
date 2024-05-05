@@ -1,14 +1,12 @@
 import { NextResponse } from 'next/server'
 
 async function nativeFetch(url, payload) {
-    console.log("fetching", url, payload)
     const req = await fetch(url, {
         body: JSON.stringify(payload),
         headers: { "Content-Type": "application/json" },
         method: "POST",
     });
     let data = await req.json()
-    console.log("fetched", data)
 
     return data;
 }
@@ -22,10 +20,11 @@ export async function middleware(request) {
         // remove trailing slash
         if (pathname !== '/' && pathname.startsWith('/')) {
             let newPath = pathname.slice(1)
+            // const usernameRes = await nativeFetch("http://localhost:3000/api/links/get-username", {
             const usernameRes = await nativeFetch("https://linklee.xyz/api/links/get-username", {
                 username: newPath
             })
-            let usernameData = await usernameRes?.data
+            let usernameData = usernameRes?.data
             if (usernameData?.link?.url?.length > 0 && usernameData?.link?.url !== null && usernameData?.link?.url !== undefined && usernameData?.link?.url !== "" && !usernameData?.link?.url?.includes("linklee.xyz/")) {
                 return NextResponse.redirect(new URL(usernameData?.link?.url))
             } else {
