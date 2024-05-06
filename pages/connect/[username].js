@@ -12,6 +12,7 @@ import Text from "@components/Text";
 import useLinks from "@hooks/queries/useLinks";
 import useCreateLink from "@hooks/mutations/useCreateLink";
 import ChangeDomainCard from "@components/ChangeDomainCard";
+import Footer from "@components/Footer";
 
 export default function Connect() {
     const [updatedData, setUpdatedData] = useState(null);

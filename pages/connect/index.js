@@ -17,6 +17,7 @@ import Button from "@components/Button";
 import Row from "@components/Row";
 import useCreateLink from "@hooks/mutations/useCreateLink";
 import useUser from "@hooks/queries/useUser";
+import Footer from "@components/Footer";
 
 export default function Connect() {
 

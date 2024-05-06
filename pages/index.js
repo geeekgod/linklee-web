@@ -23,6 +23,7 @@ import useLinks from "@hooks/queries/useLinks";
 import { getHiResDp } from "@utils/helpers";
 import TextField from "@components/TextField";
 import useCreateLink from "@hooks/mutations/useCreateLink";
+import Footer from "@components/Footer";
 
 export default function Home() {
   const [isFetchingUsername, setIsFetchingUsername] = useState(false);
@@ -201,6 +202,8 @@ export default function Home() {
           </Text>
         </Center>
       )}
+
+      <Footer />
     </Container>
   );
 }

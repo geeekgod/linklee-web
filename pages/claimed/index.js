@@ -11,6 +11,7 @@ import Text from "@components/Text";
 
 import useAuthCheck from "@hooks/useAuthCheck";
 import ActivityIndicator from "@components/ActivityIndicator";
+import Footer from "@components/Footer";
 
 export default function Home() {
     const router = useRouter();
