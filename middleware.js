@@ -11,6 +11,12 @@ async function nativeFetch(url, payload) {
     return data;
 }
 
+const appendHttpsIfNotPresent = (url) => {
+    if (!url.startsWith("https://") && !url.startsWith("http://")) {
+        return `https://${url}`;
+    }
+    return url;
+}
 
 export async function middleware(request) {
     if (request.nextUrl.pathname.startsWith('/api') || request.nextUrl.pathname.startsWith('/connect') || request.nextUrl.pathname.startsWith('/claimed') || request.nextUrl.pathname.startsWith('/_next') || request.nextUrl.pathname.startsWith('/favicon.ico') || request.nextUrl.pathname.startsWith('/manifest.json') || request.nextUrl.pathname.startsWith('/service-worker.js') || request.nextUrl.pathname.startsWith('/robots.txt') || request.nextUrl.pathname.startsWith('/sitemap.xml') || request.nextUrl.pathname.startsWith('/og-image')) {
@@ -26,7 +32,7 @@ export async function middleware(request) {
             })
             let usernameData = usernameRes?.data
             if (usernameData?.link?.url?.length > 0 && usernameData?.link?.url !== null && usernameData?.link?.url !== undefined && usernameData?.link?.url !== "" && !usernameData?.link?.url?.includes("linklee.xyz/")) {
-                return NextResponse.redirect(new URL(usernameData?.link?.url))
+                return NextResponse.redirect(new URL(appendHttpsIfNotPresent(usernameData?.link?.url)))
             } else {
                 return NextResponse.next()
             }
