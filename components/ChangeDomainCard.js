@@ -58,7 +58,6 @@ export default function ChangeDomainCard({
                         placeholder={placeholderText}
                         label="Destination"
                         onTextChange={(text) => setUrl(text)}
-                        bottomText={`${3 - numberUpdated}/3 changes left`}
                         disabled={true}
                     />
                 </div>
