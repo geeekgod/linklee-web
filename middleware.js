@@ -13,7 +13,7 @@ async function nativeFetch(url, payload) {
 
 
 export async function middleware(request) {
-    if (request.nextUrl.pathname.startsWith('/api') || request.nextUrl.pathname.startsWith('/connect') || request.nextUrl.pathname.startsWith('/claimed') || request.nextUrl.pathname.startsWith('/_next') || request.nextUrl.pathname.startsWith('/favicon.ico') || request.nextUrl.pathname.startsWith('/manifest.json') || request.nextUrl.pathname.startsWith('/service-worker.js') || request.nextUrl.pathname.startsWith('/robots.txt') || request.nextUrl.pathname.startsWith('/sitemap.xml')) {
+    if (request.nextUrl.pathname.startsWith('/api') || request.nextUrl.pathname.startsWith('/connect') || request.nextUrl.pathname.startsWith('/claimed') || request.nextUrl.pathname.startsWith('/_next') || request.nextUrl.pathname.startsWith('/favicon.ico') || request.nextUrl.pathname.startsWith('/manifest.json') || request.nextUrl.pathname.startsWith('/service-worker.js') || request.nextUrl.pathname.startsWith('/robots.txt') || request.nextUrl.pathname.startsWith('/sitemap.xml') || request.nextUrl.pathname.startsWith('/og-image')) {
         return NextResponse.next()
     } else {
         const { pathname } = request.nextUrl
